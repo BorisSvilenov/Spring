@@ -25,6 +25,19 @@ public class User {
 		setRole(role);
 		
 	}
+	public User(String firstName, String lastName, 
+			String email, String phoneNumber, String address, String password) 
+	{
+		this.id=0L;
+		setFirstName(firstName);
+		setLastName(lastName);
+		setEmail(email);
+		setPhoneNumber(phoneNumber);
+		setAddress(address);
+		setPassword(password);
+		this.role=Role.STUDENT;
+		
+	}
 	public User() 
 	{
 		this.id=0L;

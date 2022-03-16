@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="htttp://www.w3.org/1999/xhtml"
+	xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${user.firstName}">FirstName</title>
+</head>
+<body>
+	
+	<h1 th:text="${user.firstName' by '+user.lastName}">firstName and lastName</h1>
+	<p th:text="${user.email}">email</p>
+	<p th:text="${user.phoneNumber}">phoneNumber</p>
+	<p th:text="${user.address}">address</p>
+	<p th:text="${user.password}">password</p>
+	<p th:text="${user.role}">role</p>
+
+</body>
+</html>
