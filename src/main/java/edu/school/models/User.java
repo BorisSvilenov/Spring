@@ -1,5 +1,8 @@
 package edu.school.models;
 
+import java.util.EnumSet;
+import java.util.List;
+
 import edu.school.enums.Role;
 
 public class User {
@@ -10,21 +13,8 @@ public class User {
 	private String phoneNumber;
 	private String address;
 	private String password;
-	private Role role;
+	private EnumSet<Role> roles;
 	
-	public User(String firstName, String lastName, 
-			String email, String phoneNumber, String address, String password, Role role) 
-	{
-		this.id=0L;
-		setFirstName(firstName);
-		setLastName(lastName);
-		setEmail(email);
-		setPhoneNumber(phoneNumber);
-		setAddress(address);
-		setPassword(password);
-		setRole(role);
-		
-	}
 	public User(String firstName, String lastName, 
 			String email, String phoneNumber, String address, String password) 
 	{
@@ -35,7 +25,21 @@ public class User {
 		setPhoneNumber(phoneNumber);
 		setAddress(address);
 		setPassword(password);
-		this.role=Role.STUDENT;
+
+		
+	}
+	public User(String firstName, String lastName, 
+			String email, String phoneNumber, String address, String password, EnumSet<Role> set) 
+	{
+		this.id=0L;
+		setFirstName(firstName);
+		setLastName(lastName);
+		setEmail(email);
+		setPhoneNumber(phoneNumber);
+		setAddress(address);
+		setPassword(password);
+		setRoles(set);
+		
 		
 	}
 	public User() 
@@ -47,14 +51,27 @@ public class User {
 		setPhoneNumber("Unknown");
 		setAddress("Unknown");
 		setPassword("N/A");
-		setRole(Role.STUDENT);
+	
 	}
+	
+	public EnumSet<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(EnumSet<Role> roles) {
+		this.roles = roles;
+	}
+	public void addRole(Role r) 
+	{
+		roles.add(r);
+		
+	}
+	
 	
 	@Override
 	public String toString() 
 	{
-		return String.format("%s,%s,%s,%s,%s,%s,%s",getFirstName(),getLastName(),getEmail(),getPhoneNumber(),
-				getAddress(),getPassword(),getRole().toString());
+		//return String.format("%s,%s,%s,%s,%s,%s,%s",getFirstName(),getLastName(),getEmail(),getPhoneNumber(),
+		//		getAddress(),getPassword(),getRole().toString());
 		
 	}
 	
@@ -126,12 +143,7 @@ public class User {
 		if(password != null && !password.isEmpty())
 		this.password = password;
 	}
-	public Role getRole() {
-		return role;
-	}
-	public void setRole(Role role) {
-		this.role = role;
-	}
+
 	
 	
 
