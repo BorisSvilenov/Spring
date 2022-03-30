@@ -1,10 +1,14 @@
 package edu.school.repos;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import edu.school.interfaces.IRepoSubject;
@@ -14,26 +18,26 @@ import edu.school.models.User;
 @Repository("mapSubjectRepo")
 public class SubjectRepo implements IRepoSubject {
 
-	private Map<Long, Subject> subjects = new HashMap<>();
-	private long id=0L;
+	private JdbcTemplate template;
+	private String tableName = "subjects";
 	
 	
 	@Override
 	public List<Subject> getAll() 
 	{
-		return new ArrayList<Subject>(subjects.values());
+		
 	}
 
 	@Override
 	public Subject getById(Long id)
 	{
-		return subjects.get(id);
+		
+		
 	}
 
 	@Override
 	public void create(Subject s) {
-		s.setId(++id);
-		subjects.put(id, s);
+	
 	}
 
 	@Override

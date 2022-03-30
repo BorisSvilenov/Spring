@@ -22,11 +22,14 @@ import edu.school.models.User;
 public class UserRepo implements IRepoUser{
 
 	private JdbcTemplate template;
+	private String tableName = "users";
 
 	@Override
 	public List<User> getAll() {
 		
-		List<User> result =  template.query("SELECT * FROM Users", new RowMapper<User>() {
+		String query = "SELECT * from " + tableName;
+		
+		List<User> result =  template.query(query, new RowMapper<User>() {
 
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -67,6 +70,12 @@ public class UserRepo implements IRepoUser{
 
 	@Override
 	public void create(User user) {
+		
+		String query="INSERT into " + tableName+"(firstName, lastName,email,phoneNumber,address,password,Role) "
+				+ "VALUES(?,?,?,?,?,?,?)";
+		template.update(query,user.getFirstName(),user.getLastName(),
+				user.getEmail(),user.getPhoneNumber(),user.getAddress()
+				,user.getPassword(),user.getRoles());
 		
 	}
 

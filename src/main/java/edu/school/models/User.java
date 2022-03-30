@@ -1,7 +1,6 @@
 package edu.school.models;
 
 import java.util.EnumSet;
-import java.util.List;
 
 import edu.school.enums.Role;
 
@@ -70,8 +69,8 @@ public class User {
 	@Override
 	public String toString() 
 	{
-		//return String.format("%s,%s,%s,%s,%s,%s,%s",getFirstName(),getLastName(),getEmail(),getPhoneNumber(),
-		//		getAddress(),getPassword(),getRole().toString());
+		return String.format("%s,%s,%s,%s,%s,%s,%s",getFirstName(),getLastName(),getEmail(),getPhoneNumber(),
+			getAddress(),getPassword(),getRoles().toString());
 		
 	}
 	
